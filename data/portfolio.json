@@ -1,0 +1,93 @@
+{"name":"GreeniTwinCity",
+"header":"3D city",
+"headerTaglineOne":"Welcome to GreenTwincity,",
+"headerTaglineTwo":"your gateway to a digital replica of our city's landscape,",
+"headerTaglineThree":"Explore and navigate through this virtual rendition to gain insights into our Urban ",
+"headerTaglineFour":"Ecosystem.",
+"showCursor":true,"showBlog":true,"darkMode":true,
+"showResume":true,
+"socials":
+[{"id":"1","title":"Github",
+"link":"https://github.com/chetanverma16"},
+{"id":"2","title":"LinkedIn",
+"link":"https://www.linkedin.com/in/chetanverma7/"},
+{"id":"3","title":"Twitter","link":"https://twitter.com/realchetanverma"},
+{"id":"4","title":"Blog","link":"https://blog.chetanverma.com/"},
+{"id":"5","title":"Email","link":"mailto:hello@chetanverma.com"}],
+"projects":
+[{"id":"1","title":"Project One Test",
+"description":"Web Design",
+"imageSrc":"https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Njl8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
+"url":"http://chetanverma.com/"},
+{"id":"2","title":"Project Two",
+"description":"Web Development","imageSrc":"https://images.unsplash.com/photo-1605153864431-a2795a1b2f95?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwyNTY3ODl8fGVufDB8fHw%3D&auto=format&fit=crop&w=400&q=60",
+"url":"http://chetanverma.com/"},{"id":"3","title":"Project Three","description":"Design","imageSrc":"https://images.unsplash.com/photo-1504083898675-c896ecdae86e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjJ8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
+"url":"http://chetanverma.com/"},{"id":"4","title":"Project Four","description":"Marketing","imageSrc":"https://images.unsplash.com/photo-1492171983775-a51717616c0d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjB8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
+"url":"http://chetanverma.com/"},{"id":"5","title":"Project Five","description":"Development","imageSrc":"https://images.unsplash.com/photo-1534239143101-1b1c627395c5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzZ8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60","url":"http://chetanverma.com/"},{"id":"6","title":"Project Six",
+"description":"","imageSrc":"https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTAyfHxwYXN0ZWx8ZW58MHx8MHw%3D&auto=format&fit=crop&w=400&q=60",
+"url":"http://chetanverma.com/"}],"services":[{"title":"GreeniTwinCity",
+"description":"The 3D City Models of Bengreurir, also known as the city’s digital twin, are a virtual rendering of the city’s environment, operations and changing circumstances. The digital twin is a combination of information technology services, open data and constantly updating information."}
+,{"title": "The GreenCity of Bengreurir",
+"description": "The Green City of Benguerir, also known as the Mohammed VI Green City, is an innovative urban project in Morocco that focuses on sustainability and ecological living. Built around the Mohammed VI Polytechnic University, it aims to establish a leading smart and ecological knowledge city, offering residents a modern and attractive living environment."
+},{"title":"Eco-Friendly Transportation", "description":"With the vision of transforming the City of Bengueruerir into a much greener, more serene, and more active city, the   GreenItwinCity project was proposed by the TOP. Green City will be pedestrianized to fulfill different improvement criteria across the city to insure conditions for eco-friendly transportation. "} ],
+"liste":[{"index": 0,"item":"Urban model"},{
+        "index": 1,
+        "item": "3D Mesh and virtual city"
+},{
+        "index": 2,
+        "item": "Climate and Energy Atlas"
+},{
+        "index": 3,
+        "item": "Territory Perforamce"
+},{
+        "index": 4,
+        "item": "The history of the GreenCity"
+}]
+,"aboutpara":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+"resume":{"tagline":"👋  I'm a software engineer, product designer.","description":"I have delivered world-class user experiences to millions of people. Well-versed with React, Javascript, and most of the Web frameworks.","experiences":[{"id":"1","dates":"March 2022 - Present","type":"Full Time",
+"position":"Frontend Engineer at X",
+"bullets":"Bullet One, Bullet Two"},{"id":"d495c23b-4f65-479a-9b8a-cfbc1c089725","dates":"July 2020 - March 2022","type":"Full Time","position":"Frontend Engineer at X","bullets":"Worked on the frontend of a React application, Worked on the frontend of a React application"}],
+"education":{"universityName":"University X","universityDate":"2016-2020",
+"universityPara":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"},
+"languages":["Javascript","HTML5","CSS","Python","Go"],"frameworks":["React","Typescript","NodeJs"],"others":["Figma","AdobeXD","AWS"]}
+,"accordion1":[{
+                "title": "What is the Urban Model ?",
+                "desc": "It is a 3D model of the city, rich in semantic information about urban objects, including buildings. This model allows us to visualize the properties of each building such as the year of construction, number of floors, and urban zoning area. Additionally, it incorporates other urban elements such as vegetation, water resources, mobility networks, and terrain. This provides an in-depth view of the urban fabric's structuring."
+        },
+        {
+                "title":"How was the urban data model made ?",
+                "desc": "The Urban data model is constructed upon a rich tapestry of city maps, geographic data, registers, and aerial photography, alongside detailed building data models. Its methodology involves precisely situating buildings within the urban landscape by translating building footprints from the Bengreurir City Plan onto the terrain model. This integration yields three-dimensional structures, merging terrain and surface models to accurately depict buildings' walls and roofs.Presently, the data model showcases buildings, terrain features, and waterways. However, future iterations will incorporate additional elements such as trees and urban furniture objects."
+        },
+        {
+                "title": "How can the Urban model be used ?",
+                "desc": "Climate and Energy Atlas"
+        }
+],
+"accordion2": [
+        {
+                "title": "What is the virtual city ?",
+                "desc": "It is a 3D model of the city, rich in semantic information about urban objects, including buildings. This model allows us to visualize the properties of each building such as the year of construction, number of floors, and urban zoning area. Additionally, it incorporates other urban elements such as vegetation, water resources, mobility networks, and terrain. This provides an in-depth view of the urban fabric's structuring."
+        },
+        {
+                "title": "How was the virtual city made ?",
+                "desc": "The Urban data model is constructed upon a rich tapestry of city maps, geographic data, registers, and aerial photography, alongside detailed building data models. Its methodology involves precisely situating buildings within the urban landscape by translating building footprints from the Bengreurir City Plan onto the terrain model. This integration yields three-dimensional structures, merging terrain and surface models to accurately depict buildings' walls and roofs.Presently, the data model showcases buildings, terrain features, and waterways. However, future iterations will incorporate additional elements such as trees and urban furniture objects."
+        },
+        {
+                "title": "How can the virtual city be used ?",
+                "desc": "Climate and Energy Atlas"
+        }
+],
+"accordion3": [
+        {
+                "title": "What is the Climate and Energy Atlas ?",
+                "desc": "It is a 3D model of the city, rich in semantic information about urban objects, including buildings. This model allows us to visualize the properties of each building such as the year of construction, number of floors, and urban zoning area. Additionally, it incorporates other urban elements such as vegetation, water resources, mobility networks, and terrain. This provides an in-depth view of the urban fabric's structuring."
+        },
+        {
+                "title": "How was the Climate and Energy Atlas made ?",
+                "desc": "The Urban data model is constructed upon a rich tapestry of city maps, geographic data, registers, and aerial photography, alongside detailed building data models. Its methodology involves precisely situating buildings within the urban landscape by translating building footprints from the Bengreurir City Plan onto the terrain model. This integration yields three-dimensional structures, merging terrain and surface models to accurately depict buildings' walls and roofs.Presently, the data model showcases buildings, terrain features, and waterways. However, future iterations will incorporate additional elements such as trees and urban furniture objects."
+        },
+        {
+                "title": "How can the Climate and Energy Atlas be used ?",
+                "desc": "Climate and Energy Atlas"
+        }
+]}

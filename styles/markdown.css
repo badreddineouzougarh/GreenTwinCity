@@ -1,0 +1,300 @@
+/* Markdown Styling */
+
+
+.markdown-class {
+  @apply mt-5 p-5;
+}
+
+/* Headings */
+
+.markdown-class h1 {
+  @apply mt-5 text-3xl;
+}
+.markdown-class h2 {
+  @apply mt-5 text-2xl;
+}
+.markdown-class h3 {
+  @apply mt-5 text-xl;
+}
+.markdown-class h4 {
+  @apply mt-5 text-lg;
+}
+.markdown-class h5 {
+  @apply mt-5 text-base;
+}
+.markdown-class h6 {
+  @apply mt-5 text-sm;
+}
+
+.markdown-class a {
+  @apply opacity-80 font-bold text-base underline transition-all duration-200 ease-out hover:opacity-100;
+}
+
+.markdown-class p {
+  @apply mt-2 opacity-80 leading-7 font-normal text-base;
+}
+
+.markdown-class strong {
+  @apply font-extrabold;
+}
+
+.markdown-class hr {
+  @apply my-5;
+}
+
+
+
+/* Markdown Lists */
+
+.markdown-class ol {
+  @apply mt-5 ml-5;
+}
+
+.markdown-class ol li {
+  @apply text-base opacity-80 list-decimal;
+}
+
+.markdown-class ul {
+  @apply mt-5 ml-5;
+}
+
+.markdown-class ul li {
+  @apply text-base opacity-80 list-disc;
+}
+
+/* BlockQuote */
+
+.markdown-class blockquote {
+  @apply p-5 border-l-8 rounded-lg shadow-lg  text-sm bg-slate-200 text-black;
+}
+
+.markdown-class blockquote p {
+  @apply text-black text-sm;
+}
+
+
+
+/* Image */
+
+.markdown-class img {
+  @apply max-h-96 w-full my-5 object-cover rounded-lg shadow-lg;
+}
+/* styles.css */
+.custom-mr-20 {
+  margin-right: 30rem;
+  /* Adjust the value as needed */
+}
+
+/* styles.css */
+.custom-container {
+  background-color: rgb(255, 255, 255);
+  border: 2px solid black;
+  /* Exemple de style de bordure, ajustez selon vos préférences */
+  margin-left: 90vh;
+  
+  /* Exemple de rembourrage, ajustez selon vos préférences */
+}
+
+
+/* styles.css */
+.custom-button {
+  background-color: rgb(139, 183, 31);
+  /* Couleur de fond bleue */
+  color: #ffffff;
+  /* Texte en blanc */
+  font-weight: bold;
+  
+  text-align: center;
+  /* Texte en gras */
+  padding: 15px 20px;
+  /* Espacement du bouton */
+  border: none;
+  /* Supprimer la bordure */
+  border-radius: 0px;
+  /* Coins arrondis */
+  cursor: pointer;
+  /* Curseur de souris sur le bouton */
+}
+
+.custom-button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Couleur de fond bleue plus foncée au survol */
+}
+
+/* styles.css */
+.container {
+  /* Couleur de fond du conteneur global */
+  padding: 20px;
+  /* Espacement du conteneur global */
+}
+/* styles.css */
+
+/* styles.css */
+.button-list-container {
+  background-color: rgba(236, 236, 236, 0);
+  /* Couleur de fond du conteneur */
+  padding-left: 0cm;
+  border-radius: 100px;
+  padding-top: 60px;
+  padding-right: 100px;
+  /* Espacement du conteneur */
+  
+  
+  /* Coins arrondis du conteneur */
+  /* Ombre portée du conteneur */
+}
+.service-card-container {
+  margin-left: 300px;
+  /* Ajoute un décalage de 20 pixels vers la droite */
+}
+
+.container_list {
+  background-color: rgba(134, 176, 29, 0);
+  border: 8px solid rgb(134, 176, 29);
+  padding-left:20px;
+  height: 650px;
+  border-radius: 100px;
+  text-align: center;
+  font-display: center;
+  flex: 1;
+  display: flex;
+}
+
+.border_style {
+ padding-right: 20px; 
+  
+}
+.text_style {
+  background-color: rgba(165, 161, 161, 0);
+  text-align: center;
+  
+  padding-right: 150px;
+  padding-top: 50px;
+}
+.container_3D_model {
+  display: flex;
+  
+}
+
+.container_principale {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-direction: column;
+}
+
+.aboutref {
+  grid-row: 1;
+  grid-area: 2 / 2 / span 1 / span 2;
+}
+
+.text_style {
+  font-size: 50px;
+  padding-left: 0px;
+  font-style:poppins;
+  font-style: bold;
+
+}
+#text_list {
+  list-style-type: disc;
+  padding-left: 70px;
+  color: rgb(0, 0, 0);
+  text-align: left;
+  font-size: 25px;
+  
+  text-decoration-color: rgb(0, 0, 0)
+}
+.model_3d {
+  font-size: 100px;
+  color: rgb(0, 0, 0);
+  padding-top: 20px;
+  padding-right: 50px;
+  
+}
+/* Ajoutez la classe bg-white avec ses styles */
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid;
+  border-color: transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: rgb(139, 183, 31);
+  box-shadow: 0 0 0 2px rgb(139, 183, 31);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: rgb(139, 183, 31);
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: rgb(139, 183, 31);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #ffffff;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: #ffffff;
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px rgb(139, 183, 31);
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}

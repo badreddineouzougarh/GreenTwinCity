@@ -1,0 +1,31 @@
+.accordion {
+    border: 1px solid #ed0a0a;
+    /* Exemple de bordure */
+}
+
+
+
+.body {
+    background-color: #ececec;
+    color: #000000;
+}
+
+.custom-accordion-header {
+    background-color: #000000;
+    /* Bleu Bootstrap */
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border: 5px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.custom-accordion-header:hover {
+    background-color: #f9f9f9;
+    /* Une teinte plus foncée de bleu */
+}
+.accordion-button{
+    background-color: #ed0a0a;
+    color: #ed0a0a;
+}
