@@ -48,7 +48,7 @@ Before deploying the application, ensure the following tools are installed:
    Install Docker by following the official [installation guide](https://docs.docker.com/get-docker/).
 
 2. **Fraust Server**:  
-   Fraust Server is used to handle SensorThings API. Install it using Docker by following the [Fraust installation guide]([https://fraustserver.docs](https://fraunhoferiosb.github.io/FROST-Server/sensorthingsapi/1_Home.html)).
+   Fraust Server is used to handle SensorThings API. Install it using Docker by following the [Fraust installation guide] ([https://fraustserver.docs](https://fraunhoferiosb.github.io/FROST-Server/sensorthingsapi/1_Home.html)).
 
 3. **Node-RED**:  
    Manage IoT sensor pipelines with Node-RED. Install it either locally or with Docker. Refer to the [Node-RED documentation](https://nodered.org/docs/getting-started/).
