@@ -72,7 +72,6 @@ Before deploying the application, ensure the following tools are installed:
    Use the following command to clone the app repository:
    ```bash
    git clone (https://github.com/badreddineouzougarh/app_deployement.git)
-   cd <repository-folder>
    ```
 
 2. **Install Dependencies**:  
