@@ -1,0 +1,342 @@
+[
+    {
+        "id": "2a8f1934b6952154",
+        "type": "tab",
+        "label": "Flux 9",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "62474e4c694522c9",
+        "type": "junction",
+        "z": "2a8f1934b6952154",
+        "x": 880,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "153155a44c9c2ad0",
+        "type": "inject",
+        "z": "2a8f1934b6952154",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "60",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 380,
+        "wires": [
+            [
+                "199a3ac14b35420d",
+                "5069d889370c8f54",
+                "7309defdcd89498f",
+                "b695519e8442a6fb",
+                "e3b69e5c1dc663c3",
+                "5b8d95d79986fc24",
+                "f1a0368e9061436c",
+                "3720207608b2db77",
+                "aaa33cdd9dba4255",
+                "c6713c4cf69e7eaa",
+                "4be9c8327e62765a",
+                "23315ff5c9fc439e"
+            ]
+        ]
+    },
+    {
+        "id": "7309defdcd89498f",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 2,
+        "timeout": "0",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 300,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "76dd76133a53b7ec",
+        "type": "http request",
+        "z": "2a8f1934b6952154",
+        "name": "Post Observation",
+        "method": "POST",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8080/FROST-Server/v1.1/Observations",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1450,
+        "y": 280,
+        "wires": [
+            [
+                "819d469ee1c96894"
+            ]
+        ]
+    },
+    {
+        "id": "819d469ee1c96894",
+        "type": "debug",
+        "z": "2a8f1934b6952154",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1690,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "5069d889370c8f54",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 260,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ]
+        ]
+    },
+    {
+        "id": "b695519e8442a6fb",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 340,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ]
+        ]
+    },
+    {
+        "id": "e3b69e5c1dc663c3",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 380,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ]
+        ]
+    },
+    {
+        "id": "aaa33cdd9dba4255",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 540,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ]
+        ]
+    },
+    {
+        "id": "f1a0368e9061436c",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 460,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ]
+        ]
+    },
+    {
+        "id": "5b8d95d79986fc24",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 420,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ]
+        ]
+    },
+    {
+        "id": "3720207608b2db77",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 500,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ]
+        ]
+    },
+    {
+        "id": "23315ff5c9fc439e",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 660,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ]
+        ]
+    },
+    {
+        "id": "c6713c4cf69e7eaa",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 580,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ]
+        ]
+    },
+    {
+        "id": "199a3ac14b35420d",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 220,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ]
+        ]
+    },
+    {
+        "id": "4be9c8327e62765a",
+        "type": "function",
+        "z": "2a8f1934b6952154",
+        "name": "Generate Observation Payload",
+        "func": "// Function to generate observation payload with temperature, humidity, and energy values\nfunction generateObservationPayload(datastreamId, sensorId, temperature, humidity, energy, thingId) {\n    const currentDateTime = new Date().toISOString();\n    return {\n        phenomenonTime: currentDateTime,\n        resultTime: currentDateTime,\n        result: {\n            temperature: temperature,\n            humidity: humidity,\n            energy: energy.toFixed(2), // Fix to two decimal places\n        },\n        Datastream: { \"@iot.id\": datastreamId },\n        FeatureOfInterest: { \"@iot.id\": thingId }\n    };\n}\n\n// Function to generate a random float value between min and max\nfunction getRandomFloatValue(min, max) {\n    return (Math.random() * (max - min)) + min;\n}\n\n// Define the initial energy value (starting point)\nlet energyValue = 10;  // Fixed starting energy at 10 kW\n\n// Function to update the energy value by adding a random increment\nfunction updateEnergyValue(energy) {\n    const randomIncrement = getRandomFloatValue(0.01, 0.05);  // Generate a random increment between 0.01 and 0.02\n    return energy + randomIncrement;  // Add increment to previous energy value\n}\n\n// Use the actual Datastream ID that will represent the DHT11 sensor\nconst datastreamId = 1;  // Replace with the appropriate Datastream ID for DHT11\n\n// Generate random integer values for temperature and humidity\nconst temperatureValue = getRandomFloatValue(10, 22);\nconst humidityValue = getRandomFloatValue(30, 70);\n\n// Update energy value by accumulating the previous one with a random increment\nenergyValue = updateEnergyValue(energyValue);\n\n// Create a combined observation payload\nconst combinedObservation = generateObservationPayload(datastreamId, 18880, temperatureValue, humidityValue, energyValue, 2000);\n\n// Return the combined observation\nmsg.payload = combinedObservation;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 620,
+        "wires": [
+            [
+                "76dd76133a53b7ec"
+            ]
+        ]
+    }
+]
