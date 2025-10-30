@@ -21,7 +21,7 @@ This guide outlines the steps to deploy and use the **GreenITwinCity Application
 The application leverages two types of data:
 
 - **Static Data**:
-  The data used in the whole project is stored in the following drive, it could be provided by requesting the authors, [Data Repos](https://drive.google.com/file/d/1fod6RoKlBrVItw1W-FCKWy4bEreMdYOB/view?usp=sharing), 
+  The data used in the whole project is stored in the following drive, it could be provided by requesting authors, [Data Repos](https://drive.google.com/file/d/1fod6RoKlBrVItw1W-FCKWy4bEreMdYOB/view?usp=sharing), 
   During the developemt of the framwork we test other data rendering methods includes 3D city models hosted on the [Cesium Ion Cloud](https://cesium.com/cesium-ion/).
   
 - **Dynamic Data**:  
