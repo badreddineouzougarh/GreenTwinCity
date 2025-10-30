@@ -20,8 +20,9 @@ This guide outlines the steps to deploy and use the **GreenITwinCity Application
 
 The application leverages two types of data:
 
-- **Static Data**:  
-  Includes 3D city models hosted on the [Cesium Ion Cloud](https://cesium.com/cesium-ion/).
+- **Static Data**:
+  The data used in the whole project is stored in the following drive, it could be provided by requesting the authors, [Data Repos](https://drive.google.com/file/d/1fod6RoKlBrVItw1W-FCKWy4bEreMdYOB/view?usp=sharing), 
+  During the developemt of the framwork we test other data rendering methods includes 3D city models hosted on the [Cesium Ion Cloud](https://cesium.com/cesium-ion/).
   
 - **Dynamic Data**:  
   Consists of real-time IoT sensor data. Dynamic data can also include 3D models updated over time based on specifications or conditions.
@@ -128,11 +129,8 @@ To set up the SensorThings architecture:
 
 ## Notes
 
-- **Static Data**:  
-  The static 3D city models must be uploaded to the Cesium Ion platform. Make sure you have your Cesium Ion API credentials configured in the app.
-
 - **Dynamic Data**:  
-  The IoT sensor data is fetched from the Fraust server and updated in real time.
+  The IoT sensor data used in the project was used for illustration purposes(dummy dataset), is fetched from the Fraust server and updated in real time.
 
 ---
 
